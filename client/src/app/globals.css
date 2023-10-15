@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.focuss {
+  outline: none !important;
+}
+
+input {
+  outline: none !important;
+}
+
+
+.breakw {
+  width: 310px;
+  word-wrap: break-word;
+}
+
+.pbreak {
+  width: 340px;
+  word-wrap: break-word;
+}
+
+.ebreak {
+  width: 280px;
+  word-wrap: break-word;
+}
+
+.nc {
+  right: calc(50vw - 200px); 
+  top: calc(50vh - 90px);
+}
+
+@media (max-width: 640px) {
+  .nc {
+    right: calc(50% - 45vw);
+  }
+}
+
+@media (max-width: 639px) {
+  .breakw {
+    width: calc(100vw - 120px); 
+    word-wrap: break-word;
+  }
+  .pbreak {
+    width: calc(100vw - 90px);
+    word-wrap: break-word;
+  }
+
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  background-color: #111; /* Background color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: red; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Roundness of the thumb */
+}
+
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: red #111; /* Color of the thumb and track */
+}
+
+.opacity {
+  opacity: 0.7;
+}
