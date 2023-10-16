@@ -41,8 +41,8 @@ const User = () => {
         }
       
           
-          const url = 'http://localhost:3000/posts/create'
-          const url2 = `http://localhost:3000/posts/${id}/posts`;
+          const url = 'https://clarity-backend.vercel.app/posts/create'
+          const url2 = `https://clarity-backend.vercel.app/posts/${id}/posts`;
 
           const requestOptions = {
             method: 'POST',
@@ -137,8 +137,8 @@ const User = () => {
         if (redirect()) {
             router.push("/")
         } else {
-            const url = `http://localhost:3000/users/${id}`;
-            const url2 = `http://localhost:3000/posts/${id}/posts`;
+            const url = `https://clarity-backend.vercel.app/users/${id}`;
+            const url2 = `https://clarity-backend.vercel.app/posts/${id}/posts`;
             fetchUser(url, jwtToken)
             fetchPosts(url2, jwtToken)
         }
@@ -167,7 +167,7 @@ const User = () => {
       };
 
       const handleFollow = async () => {
-        const url = `http://localhost:3000/users/${id}/${userId.id}`;
+        const url = `https://clarity-backend.vercel.app/users/${id}/${userId.id}`;
         try {
           
             const followResponse = await fetch(url, {
@@ -239,7 +239,7 @@ const User = () => {
     }
   
       
-      const url = 'http://localhost:3000/users/create'
+      const url = 'https://clarity-backend.vercel.app/users/create'
       
       const requestOptions = {
         method: 'POST',
@@ -270,8 +270,8 @@ const User = () => {
         
         {user && <div className='flex xs:pr-14 mb-5  justify-center items-center xs:space-x-10 max-xs:space-x-5'>
             <div className='h-[200px] w-[200px] max-xs:h-[130px] max-xs:w-[130px] flex items-center justify-center border-[4px] border-[#444444] hover:border-red-600 overflow-hidden rounded-full'>
-                { user?.picturePath && <img className='h-full w-full object-cover' src={`http://localhost:3000/assets/${user?.picturePath}`}/>}
-                { !user?.picturePath && <img className='h-full w-full object-cover' src='cat.jpg'/>}
+                { user?.picturePath && <img alt='img' className='h-full w-full object-cover' src={`http://localhost:3000/assets/${user?.picturePath}`}/>}
+                { !user?.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
             </div>
 
             <div>

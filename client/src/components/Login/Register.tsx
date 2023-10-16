@@ -52,7 +52,7 @@ const Register = () => {
   }
 
     
-    const url = 'http://localhost:3000/auth/register'
+    const url = 'https://clarity-backend.vercel.app/auth/register'
     
     const requestOptions = {
       method: 'POST',

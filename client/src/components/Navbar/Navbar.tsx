@@ -81,7 +81,7 @@ useEffect(() => {
 
 const fetchInput = async () => {
   try {
-    const url = `http://localhost:3000/users/${search}/search`;
+    const url = `https://clarity-backend.vercel.app/users/${search}/search`;
     const usersResponse = await fetch(url, {
       method: 'GET',
       headers: {
@@ -128,8 +128,8 @@ const fetchInput = async () => {
               {response.map((e, i) => (
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img className='h-full w-full object-cover' src={`http://localhost:3000/assets/${e.picturePath}`} />}
-                { !e.picturePath && <img className='h-full w-full object-cover' src='cat.jpg'/>}
+                { e.picturePath && <img alt='img' className='h-full w-full object-cover' src={`http://localhost:3000/assets/${e.picturePath}`} />}
+                { !e.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
@@ -161,8 +161,8 @@ const fetchInput = async () => {
                 <a href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img className='h-full w-full object-cover' src={`http://localhost:3000/assets/${e.picturePath}`} />}
-                { !e.picturePath && <img className='h-full w-full object-cover' src='cat.jpg'/>}
+                { e.picturePath && <img alt='img' className='h-full w-full object-cover' src={`http://localhost:3000/assets/${e.picturePath}`} />}
+                { !e.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
