@@ -21,7 +21,7 @@ const Post = (props: any) => {
 
                 <div className='flex'>
                 <div className='h-14 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                {userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={`http://localhost:3000/assets/${userPicturePath}`} />}
+                {userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={`https://clarity-backend.vercel.app/assets/${userPicturePath}`} />}
                 {!userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={`cat.jpg`} />}
                 </div>
                 <div className=''>
@@ -31,7 +31,7 @@ const Post = (props: any) => {
                 </div>
 
                 {picturePath && show && <div onClick={() => setShow(!show)} className='border-4 border-[#555555] rounded-[20px] overflow-hidden mt-5'>
-                <img alt='img' className='' src={`http://localhost:3000/assets/${picturePath}`} />
+                <img alt='img' className='' src={`https://clarity-backend.vercel.app/assets/${picturePath}`} />
                 </div>}
                 
             </div>
