@@ -1,6 +1,5 @@
 import express from "express"
 import bodyParser from "body-parser"
-import Sequelize from 'sequelize'
 import cors from "cors"
 import dotenv from "dotenv"
 import multer from "multer"
