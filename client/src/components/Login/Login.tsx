@@ -35,7 +35,7 @@ const Login = () => {
         };
     
         
-        const url = 'http://localhost:3000/auth/login'
+        const url = 'https://clarity-backend.vercel.app/auth/login'
         
         
         const requestOptions = {
@@ -64,7 +64,7 @@ const Login = () => {
 
         // posts
         const id = responseData.user.id
-        const url2 = `http://localhost:3000/posts/${id}`;
+        const url2 = `https://clarity-backend.vercel.app/posts/${id}`;
         const jwt = responseData.token
         await fetchPosts(url2, jwt);
 
@@ -77,7 +77,7 @@ const Login = () => {
       useEffect(() => {
         const fetchData = async () => {
           if (jwtToken) {
-            const url2 = `http://localhost:3000/posts/${user.id}`;
+            const url2 = `https://clarity-backend.vercel.app/posts/${user.id}`;
             await fetchPosts(url2, jwtToken);
           }
         }
@@ -177,7 +177,7 @@ const Login = () => {
     }
   
       
-      const url = 'http://localhost:3000/posts/create'
+      const url = 'https://clarity-backend.vercel.app/posts/create'
       
       const requestOptions = {
         method: 'POST',
