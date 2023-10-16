@@ -33,7 +33,7 @@ app.use(morgan("common"))
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
-const whitelist = ['https://clarity-backend.vercel.app']; // List of allowed domains
+const whitelist = ['https://clarity-valton.vercel.app']; // List of allowed domains
 
 const corsOptions = {
   origin: function (origin, callback) {
