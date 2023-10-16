@@ -9,8 +9,7 @@
     "routes": [
       {
         "src": "/assets/(.*)",
-        "headers": { "Access-Control-Allow-Origin": "*" },
-        "continue": true
+        "dest": "/public/assets/$1"
       },
       {
         "src": "/api/upload",
@@ -19,7 +18,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/"
+        "dest": "/index.js"
       }
     ]
   }
