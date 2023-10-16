@@ -8,16 +8,6 @@
     ],
     "routes": [
       {
-        "src": "/assets/(.*)",
-        "headers": { "Access-Control-Allow-Origin": "*" },
-        "continue": true
-      },
-      {
-        "src": "/api/upload",
-        "methods": ["POST"],
-        "dest": "/index.js"
-      },
-      {
         "src": "/(.*)",
         "dest": "/"
       }
