@@ -82,12 +82,12 @@ const Register = () => {
         <p className=' mt-2 text-white font-medium text-[silver]'>Clarity is a Social Media Designed for Productivity!</p>
         </div>
         {registerTruth && <div className='mt-3 bg-red-600 w-fit pl-3 pr-1 py-1 rounded-full font-[600] flex items-center space-x-2'><p className='text-white text-[16px]'>Username is already taken</p><button onClick={() => setRegisterTruth(!registerTruth)} type='button' className='w-7 h-7 bg-black text-white hover:text-red-500 flex justify-center items-center rounded-full'><FontAwesomeIcon className='' icon={faX}/></button></div>}
-        <form onSubmit={handleSubmit} className='w-full mt-5 flex flex-col space-y-5'>
+        <form onSubmit={handleSubmit} className='w-full flex flex-col space-y-3 mt-2'>
         
 
             
 
-            <div>
+            <div className='mt-3 hidden'>
             <h1 className='text-white ml-1 font-bold '>Profile Picture<span className='text-red-500 font-[] ml-[1px]'>*</span></h1>
             <div {...getRootProps()} className={`bg-black h-10 flex items-center pl-2 rounded-[10px] border-2 border-[#444444] cursor-pointer hover:border-red-600 dropzone}`}>
                 <input className='' {...getInputProps()} />
@@ -101,12 +101,12 @@ const Register = () => {
 
             <div>
             <h1 className='text-white ml-1 font-bold '>Username<span className='text-red-500 font-[] ml-[1px]'>*</span></h1>
-            <input onChange={handleInputChange} value={username} required placeholder='@clarity' className=' h-10 text-white bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='text' pattern="^@.{1,}$"/>
+            <input onChange={handleInputChange} value={username} required placeholder='@clarity' className=' h-10 text-white input bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='text' pattern="^@.{1,}$"/>
             </div>
 
             <div className='pb-2'>
             <h1 className='text-white ml-1 font-bold '>Password<span className='text-red-500 font-[] ml-[1px]'>*</span></h1>
-            <input minLength={6} onChange={(e: any) => setPassword(e.target.value)} value={password} required placeholder='PASSWORD' className='h-10 text-white bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='password'/>
+            <input minLength={6} onChange={(e: any) => setPassword(e.target.value)} value={password} required placeholder='PASSWORD' className='input h-10 text-white bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='password'/>
             </div>
 
             <button className='hover:bg-red-700 bg-red-600 text-white font-bold rounded-[10px] h-10 w-full'>

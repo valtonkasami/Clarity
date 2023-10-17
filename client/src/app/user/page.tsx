@@ -287,7 +287,7 @@ const User = () => {
                     </button>
                 </div>}
 
-                {showEdit() && <div>
+                {showEdit() && <div className='hidden'>
                   <button onClick={() => {setEdit(true); setPicturePath(null)}} className='text-white bg-[#222222] border-2 border-[#444444] hover:border-red-600 font-[600] px-3 py-1 rounded-full'>
                     Edit profile
                   </button>

@@ -220,7 +220,7 @@ const Login = () => {
           <div className='bg-red-600 flex items-center space-x-2 rounded-full w-fit pl-3 pr-1 py-1'><h1 className='text-white font-medium'>10-100 characters</h1><button onClick={() => setShowError(!showError)} type="button" className='bg-[black] w-7 h-7 rounded-full flex items-center justify-center text-white hover:text-red-600'><FontAwesomeIcon className='' icon={faX}/></button></div>
           </div>}
     <input value={title} onChange={(e) => setTitle(e.target.value) } className='py-3 w-full bg-black text-white rounded-full px-5' type='text' placeholder='Write Something...'/>
-    <div>
+    <div className='hidden'>
             <div {...getRootProps()} className={`bg-black py-3 flex items-center pl-2 rounded-full pl-5 hover:border-2 border-red-600 cursor-pointer hover:border-red-600 dropzone}`}>
                 <input className='' {...getInputProps()} />
                 {picturePath ? (
