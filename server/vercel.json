@@ -18,6 +18,21 @@
         "continue": true
       },
       {
+        "src": "/public/assets/(.*)",
+        "methods": ["POST"],
+        "dest": "/index.js"
+      },
+      {
+        "src": "/assets/(.*)",
+        "methods": ["POST"],
+        "dest": "/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "methods": ["POST"],
+        "dest": "/index.js"
+      },
+      {
         "src": "/auth/register",
         "methods": ["POST"],
         "dest": "/index.js"
