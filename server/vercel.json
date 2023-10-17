@@ -10,42 +10,37 @@
       {
         "src": "/assets/(.*)",
         "headers": { "Access-Control-Allow-Origin": "*" },
-        "continue": true
+        "methods": ["POST"],
+        "continue": true,
+        "dest": "/index.js"
       },
       {
         "src": "/public/assets/(.*)",
         "headers": { "Access-Control-Allow-Origin": "*" },
-        "continue": true
-      },
-      {
-        "src": "/public/assets/(.*)",
         "methods": ["POST"],
-        "dest": "/index.js"
-      },
-      {
-        "src": "/assets/(.*)",
-        "methods": ["POST"],
-        "dest": "/index.js"
-      },
-      {
-        "src": "/(.*)",
-        "methods": ["POST"],
+        "continue": true,
         "dest": "/index.js"
       },
       {
         "src": "/auth/register",
         "methods": ["POST"],
-        "dest": "/index.js"
+        "dest": "/index.js",
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "continue": true
       },
       {
         "src": "/posts/create",
         "methods": ["POST"],
-        "dest": "/index.js"
+        "dest": "/index.js",
+        "continue": true,
+        "headers": { "Access-Control-Allow-Origin": "*" }
       },
       {
         "src": "/users/create",
         "methods": ["POST"],
-        "dest": "/index.js"
+        "dest": "/index.js",
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "continue": true
       },
       {
         "src": "/(.*)",
