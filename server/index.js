@@ -46,9 +46,9 @@ app.use(cors(corsOptions))
 
 
 // upload pictures to amazon then from the front end, get them with the url link
-app.post("/auth/register", upload.single("picture"), register)
-app.post("/posts/create", verifyToken, upload.single("picture"), createPost)
-app.post("/users/create", verifyToken, upload.single("picture"), changePfp)
+app.post("/auth/register", register)
+app.post("/posts/create", verifyToken, createPost)
+app.post("/users/create", verifyToken, changePfp)
 
 app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
