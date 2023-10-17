@@ -13,7 +13,7 @@
         "continue": true
       },
       {
-        "src": "/api/upload",
+        "src": "/(.*)",
         "methods": ["POST"],
         "dest": "/index.js"
       },
