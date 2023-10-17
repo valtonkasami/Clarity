@@ -13,7 +13,22 @@
         "continue": true
       },
       {
-        "src": "/(.*)",
+        "src": "/public/assets/(.*)",
+        "headers": { "Access-Control-Allow-Origin": "*" },
+        "continue": true
+      },
+      {
+        "src": "/auth/register",
+        "methods": ["POST"],
+        "dest": "/index.js"
+      },
+      {
+        "src": "/posts/create",
+        "methods": ["POST"],
+        "dest": "/index.js"
+      },
+      {
+        "src": "/users/create",
         "methods": ["POST"],
         "dest": "/index.js"
       },
