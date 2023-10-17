@@ -2,6 +2,7 @@ import express from "express"
 import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from "dotenv"
+import multer from "multer"
 import helmet from "helmet"
 import morgan from "morgan"
 import path from "path"
@@ -48,9 +49,22 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-app.post("/auth/register", register)
-app.post("/posts/create", verifyToken,  createPost)
-app.post("/users/create", verifyToken,  changePfp)
+app.use("/assets", express.static(path.join(__dirname, 'public/assets')))
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/assets")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+const upload = multer({ storage })
+
+
+
+app.post("/auth/register", upload.single("picture"), register)
+app.post("/posts/create", verifyToken, upload.single("picture"), createPost)
+app.post("/users/create", verifyToken, upload.single("picture"), changePfp)
 
 app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
