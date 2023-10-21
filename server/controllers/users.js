@@ -2,6 +2,13 @@ import { Sequelize, Op } from "sequelize";
 import User from "../models/User.js";
 import Post from "../models/Post.js";
 
+import { firebaseConfig } from "../firebase.config.js";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+
+initializeApp(firebaseConfig);
+const storage = getStorage();
+
 export const getUser = async (req, res) => {
     try {
         const { id } = req.params
@@ -86,14 +93,27 @@ export const followUser = async (req, res) => {
   }
 };
 
+
+
 export const changePfp = async (req, res) => {
   try {
-    const { id, picturePath } = req.body
+    const { id } = req.body
     const user = await User.findOne({ where: { id } });
     const posts = await Post.findAll({ where: {userId: id} }) 
 
     if (!user) {
         return res.status(404).json({ message: "User not found" });
+}
+
+let picturePath = null;
+
+if (req.file) {
+  const storageRef = ref(storage, req.file.originalname)
+  await uploadBytes(storageRef, req.file.buffer).then((snapshot) => {
+    console.log("file uploaded");
+  });
+
+  picturePath = await getDownloadURL(storageRef);
 }
 
       await user.update({ picturePath })

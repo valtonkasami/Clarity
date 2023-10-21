@@ -48,7 +48,6 @@ const Register = () => {
     
   if (picturePath) {
     formData.append('picture', picturePath);
-    formData.append('picturePath', picturePath.name);
   }
 
     
@@ -87,7 +86,7 @@ const Register = () => {
 
             
 
-            <div className='mt-3 hidden'>
+            <div className='mt-3'>
             <h1 className='text-white ml-1 font-bold '>Profile Picture<span className='text-red-500 font-[] ml-[1px]'>*</span></h1>
             <div {...getRootProps()} className={`bg-black h-10 flex items-center pl-2 rounded-[10px] border-2 border-[#444444] cursor-pointer hover:border-red-600 dropzone}`}>
                 <input className='' {...getInputProps()} />
@@ -101,7 +100,7 @@ const Register = () => {
 
             <div>
             <h1 className='text-white ml-1 font-bold '>Username<span className='text-red-500 font-[] ml-[1px]'>*</span></h1>
-            <input onChange={handleInputChange} value={username} required placeholder='@clarity' className=' h-10 text-white input bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='text' pattern="^@.{1,}$"/>
+            <input onChange={handleInputChange} value={username} required placeholder='@clarity' className=' h-10 text-white input bg-[black] w-full pl-2 border-2 rounded-[10px] border-[#444444] hover:border-red-600 focus:border-red-600 focuss' type='text' pattern="^@[a-zA-Z0-9._]{1,20}$"/>
             </div>
 
             <div className='pb-2'>

@@ -1,14 +1,26 @@
-import bcrypt from "bcryptjs"
+import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import User from "../models/User.js"
+
+import { firebaseConfig } from "../firebase.config.js";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+
+initializeApp(firebaseConfig);
+const storage = getStorage();
 
 export const register = async (req, res) => {
     try {
         const {
             username,
-            password,
-            picturePath,
+            password
         } = req.body;
+
+        const storageRef = ref(storage, req.file.originalname)
+        await uploadBytes(storageRef, req.file.buffer).then((snapshot) => {
+        console.log("file uploaded")
+        })
+        const picturePath = await getDownloadURL(storageRef);
 
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);

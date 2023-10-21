@@ -2,13 +2,32 @@ import { Sequelize, Op } from "sequelize";
 import Post from "../models/Post.js";
 import User from "../models/User.js";
 
+import { firebaseConfig } from "../firebase.config.js";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+
+initializeApp(firebaseConfig);
+const storage = getStorage();
+
 export const createPost = async (req, res) => {
     try {
-        const { userId, description, picturePath } = req.body
+        const { userId, description } = req.body
         const user = await User.findOne({ where: { id: userId } });
         
         if (!user) {
             return res.status(404).json({ message: "User not found" });
+    }
+
+    
+    let picturePath = null;
+
+    if (req.file) {
+      const storageRef = ref(storage, req.file.originalname)
+      await uploadBytes(storageRef, req.file.buffer).then((snapshot) => {
+        console.log("file uploaded");
+      });
+
+      picturePath = await getDownloadURL(storageRef);
     }
 
         const newPost = await Post.create({

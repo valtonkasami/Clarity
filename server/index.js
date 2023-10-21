@@ -2,7 +2,6 @@ import express from "express"
 import bodyParser from "body-parser"
 import cors from "cors"
 import dotenv from "dotenv"
-import multer from "multer"
 import helmet from "helmet"
 import morgan from "morgan"
 import path from "path"
@@ -15,7 +14,7 @@ import userRoutes from "./routes/users.js"
 import postRoutes from "./routes/posts.js"
 import { createPost } from "./controllers/posts.js"
 import { changePfp } from "./controllers/users.js"
-
+import multer from "multer"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename)
@@ -33,7 +32,7 @@ app.use(morgan("common"))
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
-const whitelist = ['https://clarity-valton.vercel.app']; // List of allowed domains
+const whitelist = ['https://clarity-valton.vercel.app']; 
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -48,19 +47,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')))
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "public/assets")
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-const upload = multer({ storage })
-
-
+const upload = multer({ storage: multer.memoryStorage() });
 
 app.post("/auth/register", upload.single("picture"), register)
 app.post("/posts/create", verifyToken, upload.single("picture"), createPost)
