@@ -66,7 +66,6 @@ const User = () => {
             setTitle('')
             setPicturePath(null)
             fetchPosts(url2, jwtToken)
-            location.reload()
           } catch (error) {
             console.error('Error:', error);
           }} else {
