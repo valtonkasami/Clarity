@@ -65,8 +65,8 @@ const User = () => {
             dispatch(setPosts({feedPosts: responseData}))
             setTitle('')
             setPicturePath(null)
-
             fetchPosts(url2, jwtToken)
+            location.reload()
           } catch (error) {
             console.error('Error:', error);
           }} else {
@@ -228,7 +228,8 @@ const User = () => {
         }
       }
 
-      const handleSubmit = async () => {
+      const handleSubmit = async (e: any) => {
+        e.preventDefault()
         const formData = new FormData();
     formData.append('id', userId.id);
 
@@ -256,7 +257,8 @@ const User = () => {
         }
   
         const responseData = await response.json();
-
+        
+        location.reload()
         
       } catch (error) {
         console.error('Error:', error);

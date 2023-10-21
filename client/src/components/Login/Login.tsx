@@ -200,6 +200,7 @@ const Login = () => {
         dispatch(setPosts({feedPosts: responseData}))
         setTitle('')
         setPicturePath(null)
+        location.reload()
       } catch (error) {
         console.error('Error:', error);
       }} else {
