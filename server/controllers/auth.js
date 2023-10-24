@@ -16,11 +16,14 @@ export const register = async (req, res) => {
             password
         } = req.body;
 
+        let picturePath = null;
+        if (req.file) {
         const storageRef = ref(storage, req.file.originalname)
         await uploadBytes(storageRef, req.file.buffer).then((snapshot) => {
         console.log("file uploaded")
         })
         const picturePath = await getDownloadURL(storageRef);
+      }
 
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, salt);
