@@ -34,6 +34,7 @@ export const searchUser = async (req, res) => {
           [Op.iLike]: `%${input}%`,
         },
       },
+      limit: 10,
     });
 
     res.json(users);

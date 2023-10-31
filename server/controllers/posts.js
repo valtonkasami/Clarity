@@ -57,6 +57,7 @@ export const createPost = async (req, res) => {
           const feedPosts = await Post.findAll({
             where: whereClause,
             order: [["createdAt", "DESC"]],
+            limit: 10,
           });
       
           res.status(201).json(feedPosts);
@@ -92,6 +93,7 @@ export const getFeedPosts = async (req, res) => {
           const feedPosts = await Post.findAll({
             where: whereClause,
             order: [["createdAt", "DESC"]],
+            limit: 10,
           });
       
           res.status(200).json(feedPosts);
@@ -103,7 +105,7 @@ export const getFeedPosts = async (req, res) => {
 export const getUserPosts = async (req, res) => {
     try {
         const { userId } = req.params
-        const userPost = await Post.findAll({ where: { userId }, order: [["createdAt", "DESC"]],})
+        const userPost = await Post.findAll({ where: { userId }, order: [["createdAt", "DESC"]], limit: 10,})
         if (userPost.length === 0) {
             return res.status(404).json({ message: "No posts found for this user" });
           }

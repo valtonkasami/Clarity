@@ -22,6 +22,11 @@ input {
 
 
 .breakw {
+  width: 260px;
+  word-wrap: break-word;
+}
+
+.breakt {
   width: 310px;
   word-wrap: break-word;
 }
@@ -49,6 +54,10 @@ input {
 
 @media (max-width: 639px) {
   .breakw {
+    width: calc(100vw - 160px); 
+    word-wrap: break-word;
+  }
+  .breakt {
     width: calc(100vw - 120px); 
     word-wrap: break-word;
   }
