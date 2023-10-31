@@ -46,7 +46,7 @@ const Post = (props: any) => {
                 {!userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={`cat.jpg`} />}
                 </div>
                 <div className=''>
-                    <h1 onClick={redirect} className='cursor-pointer text-[silver] hover:text-red-500 font-[600] ml-2 mt-1 w-fit'>{username}</h1>
+                    <h1 onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='cursor-pointer text-[silver] hover:text-red-500 font-[600] ml-2 mt-1 w-fit'>{username}</h1>
                     <p className={`text-white ml-3 ${breakw()} mr-5`}>{description}</p>
                 </div>
                 </div>
