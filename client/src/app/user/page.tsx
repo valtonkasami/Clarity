@@ -264,13 +264,18 @@ const User = () => {
       } 
     };
 
+const [imgLoad, setImgLoad] = useState('hidden')
+useEffect(() => {
+ setImgLoad('')   
+}, [])
+
   return (
     <div className=''>
         
         {user && <div className='flex xs:pr-14 mb-5  justify-center items-center xs:space-x-10 max-xs:space-x-5'>
             <div className='h-[200px] w-[200px] max-xs:h-[130px] max-xs:w-[130px] flex items-center justify-center border-[4px] border-[#444444] hover:border-red-600 overflow-hidden rounded-full'>
-                { user?.picturePath && <img alt='img' className='h-full w-full object-cover' src={user?.picturePath}/>}
-                { !user?.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
+                { user?.picturePath && <img alt='img' className={`${imgLoad} h-full w-full object-cover`} src={user?.picturePath}/>}
+                { !user?.picturePath && <img alt='img' className={`${imgLoad} h-full w-full object-cover`} src='cat.jpg'/>}
             </div>
 
             <div>
