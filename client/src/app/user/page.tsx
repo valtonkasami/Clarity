@@ -264,14 +264,21 @@ const User = () => {
       } 
     };
 
+    
+const [imageLoaded, setImageLoaded] = useState(false);
+
+const handleImageLoad = () => {
+  setImageLoaded(true);
+};
+
 
   return (
     <div className=''>
         
         {user && <div className='flex xs:pr-14 mb-5  justify-center items-center xs:space-x-10 max-xs:space-x-5'>
             <div className='h-[200px] w-[200px] max-xs:h-[130px] max-xs:w-[130px] flex items-center justify-center border-[4px] border-[#444444] hover:border-red-600 overflow-hidden rounded-full'>
-                { user?.picturePath && <img alt='img' className='hidden h-full w-full object-cover' onLoad="this.classList.remove('hidden')" src={user?.picturePath}/>}
-                { !user?.picturePath && <img alt='img' className='hidden h-full w-full object-cover' onLoad="this.classList.remove('hidden')" src='cat.jpg'/>}
+                { user?.picturePath && imageLoaded && <img alt='img' className=' h-full w-full object-cover' onLoad={handleImageLoad} src={user?.picturePath}/>}
+                { !user?.picturePath && imageLoaded && <img alt='img' className=' h-full w-full object-cover' onLoad={handleImageLoad} src='cat.jpg'/>}
             </div>
 
             <div>
