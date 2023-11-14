@@ -33,6 +33,12 @@ const Post = (props: any) => {
         } else return false
       }
 
+    const [imageLoaded, setImageLoaded] = useState('hidden');
+
+const handleImageLoad = () => {
+  setImageLoaded('');
+}; 
+
   return (
     <div onClick={() => setShow(!show)} className='max-sm:w-full max-sm:px-3'>
         <div className={`bg-[#222222] py-2 px-2 max-sm:w-full w-[400px] border-2 border-[#444444] ${one()} rounded-[20px]`}>
@@ -42,8 +48,8 @@ const Post = (props: any) => {
 
                 <div className='flex'>
                 <div className={`cursor-pointer h-14 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden`}>
-                {userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={userPicturePath} />}
-                {!userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='h-full w-full object-cover' src={`cat.jpg`} />}
+                {userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className={` ${imageLoaded} h-full w-full object-cover`} src={userPicturePath} onLoad={handleImageLoad} />}
+                {!userPicturePath && <img alt='img' onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className={` ${imageLoaded} h-full w-full object-cover`} src={`cat.jpg`} onLoad={handleImageLoad} />}
                 </div>
                 <div className=''>
                     <h1 onClick={(e) => {redirect(e); dispatch(setId({id: userId}))}} className='cursor-pointer text-[silver] hover:text-red-500 font-[600] ml-2 mt-1 w-fit'>{username}</h1>
