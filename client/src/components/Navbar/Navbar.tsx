@@ -107,6 +107,12 @@ const fetchInput = async () => {
   }
 }
 
+  const [imageLoaded, setImageLoaded] = useState('hidden');
+
+const handleImageLoad = () => {
+  setImageLoaded('');
+};
+  
   return (
     <div className='w-full'>
       <div className='fixed top-0 w-full'>
@@ -128,8 +134,8 @@ const fetchInput = async () => {
               {response.map((e, i) => (
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className='h-full w-full object-cover' src={e.picturePath} />}
-                { !e.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
+                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
@@ -161,8 +167,8 @@ const fetchInput = async () => {
                 <a key={i} href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className='h-full w-full object-cover' src={e.picturePath} />}
-                { !e.picturePath && <img alt='img' className='h-full w-full object-cover' src='cat.jpg'/>}
+                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
