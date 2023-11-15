@@ -168,7 +168,7 @@ const handleImageLoad2 = () => {
           {user && open && <div className='flex sm:hidden z-30 justify-center mt-[75px] fixed w-full top-0 left-0 z-40'>
            <input onChange={(e) => setSearch(e.target.value)} value={search} type='text' className='sm:hidden px-3 bg-[#111111] border-b-2 border-[#444444] hover:border-red-600 focus:border-red-600 h-10 w-full pl-3 text-white' placeholder='Search Someone...'/>
                 
-           {imageLoaded2 && <div className='sm:hidden h-fit absolute top-10 left-0 w-full overflow-hidden border-x-2 border-b-2 border-[#555555] rounded-b-[20px] bg-[#111111]' style={{height: 'calc(100vh - 115px)'}}><div className={`h-[83vh] overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-full  border-red-600  rounded-b-[20px]`} style={{height: 'calc(100vh - 115px)'}}>
+           {<div className='sm:hidden h-fit absolute top-10 left-0 w-full overflow-hidden border-x-2 border-b-2 border-[#555555] rounded-b-[20px] bg-[#111111]' style={{height: 'calc(100vh - 115px)'}}><div className={`h-[83vh] overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-full  border-red-600  rounded-b-[20px]`} style={{height: 'calc(100vh - 115px)'}}>
               {response.map((e, i) => (
                 <a key={i} href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
