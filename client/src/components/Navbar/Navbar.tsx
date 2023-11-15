@@ -107,28 +107,10 @@ const fetchInput = async () => {
   }
 }
 
-  const [imageLoaded, setImageLoaded] = useState('hidden');
+  const [imageLoaded, setImageLoaded] = useState('hidden')
 
 const handleImageLoad = () => {
   setImageLoaded('');
-};
-
-const [imageLoaded2, setImageLoaded2] = useState('hidden');
-
-const handleImageLoad2 = () => {
-  setImageLoaded2('');
-};
-
-const [imageLoaded3, setImageLoaded3] = useState('hidden');
-
-const handleImageLoad3 = () => {
-  setImageLoaded3('');
-};
-
-const [imageLoaded4, setImageLoaded4] = useState('hidden');
-
-const handleImageLoad4 = () => {
-  setImageLoaded4('');
 };
   
   return (
@@ -153,7 +135,7 @@ const handleImageLoad4 = () => {
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
                 { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
-                { !e.picturePath && <img alt='img' className={` ${imageLoaded2} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad2} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
@@ -185,8 +167,8 @@ const handleImageLoad4 = () => {
                 <a key={i} href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className={` ${imageLoaded3} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad3} />}
-                { !e.picturePath && <img alt='img' className={` ${imageLoaded4} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad4} />}
+                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
