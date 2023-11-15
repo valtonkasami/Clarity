@@ -107,10 +107,16 @@ const fetchInput = async () => {
   }
 }
 
-  const [imageLoaded, setImageLoaded] = useState('hidden')
+  const [imageLoaded, setImageLoaded] = useState(false)
 
 const handleImageLoad = () => {
-  setImageLoaded('');
+  setImageLoaded(true);
+};
+
+const [imageLoaded2, setImageLoaded2] = useState(false)
+
+const handleImageLoad2 = () => {
+  setImageLoaded2(true);
 };
   
   return (
@@ -130,12 +136,12 @@ const handleImageLoad = () => {
 
             <input onChange={(e) => setSearch(e.target.value)} value={search} type='text' className='max-sm:hidden absolute left-[200px] rounded-full bg-black border-2 border-[#555555] hover:border-red-600 focus:border-red-600 h-8 w-[250px] pl-3 text-white' placeholder='Search Someone...'/>
             
-            {responseBool && <a href='/user'><div className=' max-sm:hidden absolute top-[75px] left-[145px] w-[355px] overflow-hidden border-x-2 border-b-2 border-[#555555]  rounded-b-[20px] bg-[#111111]'><div className={` ${height(response)} overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-[350px]  border-red-600  rounded-b-[20px]`}>
+            {responseBool && imageLoaded && <a href='/user'><div className=' max-sm:hidden absolute top-[75px] left-[145px] w-[355px] overflow-hidden border-x-2 border-b-2 border-[#555555]  rounded-b-[20px] bg-[#111111]'><div className={` ${height(response)} overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-[350px]  border-red-600  rounded-b-[20px]`}>
               {response.map((e, i) => (
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
-                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
+                { e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
+                { !e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
@@ -162,13 +168,13 @@ const handleImageLoad = () => {
           {user && open && <div className='flex sm:hidden z-30 justify-center mt-[75px] fixed w-full top-0 left-0 z-40'>
            <input onChange={(e) => setSearch(e.target.value)} value={search} type='text' className='sm:hidden px-3 bg-[#111111] border-b-2 border-[#444444] hover:border-red-600 focus:border-red-600 h-10 w-full pl-3 text-white' placeholder='Search Someone...'/>
                 
-           {<div className='sm:hidden h-fit absolute top-10 left-0 w-full overflow-hidden border-x-2 border-b-2 border-[#555555] rounded-b-[20px] bg-[#111111]' style={{height: 'calc(100vh - 115px)'}}><div className={`h-[83vh] overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-full  border-red-600  rounded-b-[20px]`} style={{height: 'calc(100vh - 115px)'}}>
+           {imageLoaded2 && <div className='sm:hidden h-fit absolute top-10 left-0 w-full overflow-hidden border-x-2 border-b-2 border-[#555555] rounded-b-[20px] bg-[#111111]' style={{height: 'calc(100vh - 115px)'}}><div className={`h-[83vh] overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-full  border-red-600  rounded-b-[20px]`} style={{height: 'calc(100vh - 115px)'}}>
               {response.map((e, i) => (
                 <a key={i} href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
-                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
+                { e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad2} />}
+                { !e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad2} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
