@@ -107,16 +107,16 @@ const fetchInput = async () => {
   }
 }
 
-  const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState('hidden')
 
 const handleImageLoad = () => {
-  setImageLoaded(true);
+  setImageLoaded('');
 };
 
-const [imageLoaded2, setImageLoaded2] = useState(false)
+const [imageLoaded2, setImageLoaded2] = useState('hidden')
 
 const handleImageLoad2 = () => {
-  setImageLoaded2(true);
+  setImageLoaded2('');
 };
   
   return (
@@ -136,12 +136,12 @@ const handleImageLoad2 = () => {
 
             <input onChange={(e) => setSearch(e.target.value)} value={search} type='text' className='max-sm:hidden absolute left-[200px] rounded-full bg-black border-2 border-[#555555] hover:border-red-600 focus:border-red-600 h-8 w-[250px] pl-3 text-white' placeholder='Search Someone...'/>
             
-            {responseBool && imageLoaded && <a href='/user'><div className=' max-sm:hidden absolute top-[75px] left-[145px] w-[355px] overflow-hidden border-x-2 border-b-2 border-[#555555]  rounded-b-[20px] bg-[#111111]'><div className={` ${height(response)} overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-[350px]  border-red-600  rounded-b-[20px]`}>
+            {responseBool && <a href='/user'><div className=' max-sm:hidden absolute top-[75px] left-[145px] w-[355px] overflow-hidden border-x-2 border-b-2 border-[#555555]  rounded-b-[20px] bg-[#111111]'><div className={` ${height(response)} overflow-auto drop-shadow-[0_20px_20px_rgba(0,0,0,1)] text-white px-3 w-[350px]  border-red-600  rounded-b-[20px]`}>
               {response.map((e, i) => (
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
-                { !e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
+                { e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
@@ -173,8 +173,8 @@ const handleImageLoad2 = () => {
                 <a key={i} href='/user'>
                 <div key={i} onClick={() => { dispatch(setId({ id: e.id })) }} className={`flex hover:text-red-500 items-center ${line(i)} border-[#666666] pb-5 pt-5`}>
                   <div className='h-14 mr-3 w-14 border-[3px] border-[#444444] hover:border-red-600 rounded-full flex items-center justify-center overflow-hidden'>
-                { e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad2} />}
-                { !e.picturePath && <img alt='img' className={` h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad2} />}
+                { e.picturePath && <img alt='img' className={` ${imageLoaded2} h-full w-full object-cover`} src={e.picturePath} onLoad={handleImageLoad2} />}
+                { !e.picturePath && <img alt='img' className={` ${imageLoaded2} h-full w-full object-cover`} src='cat.jpg' onLoad={handleImageLoad2} />}
                 </div>
                 <p className='font-bold'>{e.username}</p>
                 </div>
